@@ -1,0 +1,68 @@
+; setup.inf
+
+[version]
+signature="$Windows NT$"
+
+[DefaultInstall]
+CopyFiles=Inf.Copy, Exe.Copy;
+AddReg=Waifu2xDoHide.Reg
+
+[DefaultInstall.ntx86]
+CopyFiles=Inf.Copy, Exe.Copy;
+AddReg=Waifu2xDoHide.Reg.ntx86
+
+[DefaultUninstall]
+DelFiles=Inf.Copy, Exe.Copy
+DelReg=Waifu2xDoHide.Reg
+
+[DefaultUninstall.ntx86]
+DelFiles=Inf.Copy, Exe.Copy
+DelReg=Waifu2xDoHide.Reg.ntx86
+
+[Inf.Copy]
+setup.inf;
+
+[Exe.Copy]
+Waifu2x.bat;
+
+[SourceDisksNames]
+55=%TITLE%,"",1
+
+[SourceDisksFiles]
+Inf.Copy=55
+Exe.Copy=56
+
+[DestinationDirs]
+Inf.Copy=17;
+Exe.Copy=25;
+
+[Waifu2xDoHide.Reg]
+HKCR,%NAMECOPY%
+HKCR,%NAMECOPY%,,,%MENUNAMECOPY%
+HKCR,%NAMECOPY%\command\,,,%CMDNAMECOPY%
+HKCR,%DOWAIFU%
+HKCR,%DOWAIFU%,,,%MENUDOWAIFU%
+HKCR,%DOWAIFU%\command\,,,%CMDDOWAIFU%
+HKLM,%SMWCUG%
+HKLM,%SMWCUG%,DisplayName,,%TITLE% ÇÃçÌèú
+HKLM,%SMWCUG%,UninstallString,,"rundll.exe setupx.dll,InstallHinfSection DefaultUninstall 132 %17%\setup.inf"
+
+[Waifu2xDoHide.Reg.ntx86]
+HKCR,%NAMECOPY%
+HKCR,%NAMECOPY%,,,%MENUNAMECOPY%
+HKCR,%NAMECOPY%\command\,,,%CMDNAMECOPY%
+HKCR,%DOWAIFU%
+HKCR,%DOWAIFU%,,,%MENUDOWAIFU%
+HKCR,%DOWAIFU%\command\,,,%CMDDOWAIFU%
+HKLM,%SMWCUG%
+HKLM,%SMWCUG%,DisplayName,,%TITLE% ÇÃçÌèú
+HKLM,%SMWCUG%,UninstallString,,"RunDll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultUninstall.ntx86 132 %17%\setup.inf"
+
+[Strings]
+;NAMECOPY="AllFilesystemObjects\shell\NameCopy"
+DOWAIFU="AllFilesystemObjects\shell\DoWaifu"
+MENUDOWAIFU="PNGÇÃ2î{âª"
+CMDDOWAIFU="Waifu2x.bat ""%1"""
+SMWCUG="Software\Microsoft\Windows\CurrentVersion\Uninstall\Waifu2x"
+TITLE="Waifu2x ver1.001"
+
