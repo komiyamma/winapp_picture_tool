@@ -1,3 +1,4 @@
+C:
 cd C:\usr\waifu2x-caffe
 set temp_dir_waifu2x=%~dp1
 set temp_file_waifu2x=%~nx1
